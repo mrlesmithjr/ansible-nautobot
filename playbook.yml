@@ -1,0 +1,7 @@
+---
+- name: Example Playbook
+  hosts: all
+  tasks:
+    - name: Include ansible_nautobot
+      include_role:
+        name: ansible_nautobot
