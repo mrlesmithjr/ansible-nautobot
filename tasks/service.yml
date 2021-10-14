@@ -1,0 +1,14 @@
+---
+- name: service | Configuring Nautobot Service
+  ansible.builtin.template:
+    dest: /etc/systemd/system/nautobot.service
+    src: nautobot.service.j2
+  become: true
+  notify: restart nautobot
+
+- name: service | Configuring Nautobot Worker Service
+  ansible.builtin.template:
+    dest: /etc/systemd/system/nautobot-worker.service
+    src: nautobot-worker.service.j2
+  become: true
+  notify: restart nautobot-worker

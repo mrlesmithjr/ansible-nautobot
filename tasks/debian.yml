@@ -1,0 +1,8 @@
+---
+- name: debian | Installing Pre-Reqs
+  ansible.builtin.apt:
+    name: "{{ nautobot_debian_pre_reqs }}"
+    state: present
+  become: true
+  register: result
+  until: result is successful

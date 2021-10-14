@@ -1,2 +1,8 @@
 ---
 # tasks file for ansible_nautobot
+- ansible.builtin.include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- ansible.builtin.include_tasks: install.yml
+
+- ansible.builtin.include_tasks: service.yml

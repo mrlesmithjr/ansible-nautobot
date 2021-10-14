@@ -1,2 +1,17 @@
 ---
 # handlers file for ansible_nautobot
+- name: restart nautobot
+  ansible.builtin.systemd:
+    name: nautobot
+    state: restarted
+    enabled: true
+    daemon_reload: true
+  become: true
+
+- name: restart nautobot-worker
+  ansible.builtin.systemd:
+    name: nautobot-worker
+    state: restarted
+    enabled: true
+    daemon_reload: true
+  become: true

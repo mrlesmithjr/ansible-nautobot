@@ -1,7 +1,26 @@
 ---
 - name: Example Playbook
   hosts: all
+  vars:
+    postgresql_dbs:
+      - name: nautobot
+        state: present
+    postgresql_users:
+      - name: nautobot
+        db: nautobot
+        password: nautobot
+        state: present
+    pri_domain_name: test.vagrant.local
   tasks:
+    - name: Include ansible-bootstrap-python
+      include_role:
+        name: ansible-bootstrap-python
+    - name: Include ansible-postgresql
+      include_role:
+        name: ansible-postgresql
+    - name: Include ansible-redis
+      include_role:
+        name: ansible-redis
     - name: Include ansible_nautobot
       include_role:
         name: ansible_nautobot

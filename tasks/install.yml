@@ -1,0 +1,98 @@
+---
+- name: install | Ensuring {{ nautobot_group }} Group Exists
+  ansible.builtin.group:
+    name: "{{ nautobot_group }}"
+  become: true
+
+- name: install | Ensuring {{ nautobot_user }} User Exists
+  ansible.builtin.user:
+    name: "{{ nautobot_user }}"
+    group: "{{ nautobot_group }}"
+    home: "{{ nautobot_root }}"
+    shell: /bin/bash
+    system: true
+  become: true
+
+- name: install | Updating Python Packages
+  ansible.builtin.pip:
+    name:
+      - pip
+      - wheel
+    state: latest
+    virtualenv: "{{ nautobot_root }}"
+    virtualenv_command: /usr/bin/python3 -m venv
+  become: true
+  become_user: "{{ nautobot_user }}"
+  vars:
+    ansible_ssh_pipelining: true
+
+- name: install | Creating Nautobot Virtual Environment
+  ansible.builtin.pip:
+    name: nautobot
+    virtualenv: "{{ nautobot_root }}"
+    virtualenv_command: /usr/bin/python3 -m venv
+  become: true
+  become_user: "{{ nautobot_user }}"
+  vars:
+    ansible_ssh_pipelining: true
+
+- name: install | Ensuring {{ nautobot_config|dirname }} exists
+  ansible.builtin.file:
+    dest: "{{ nautobot_config|dirname }}"
+    state: directory
+    owner: "{{ nautobot_user }}"
+    group: "{{ nautobot_group }}"
+    mode: u=rwx,g=rx,o=rx
+  become: true
+
+- name: install | Configuring Nautobot
+  ansible.builtin.template:
+    src: nautobot_config.py.j2
+    dest: "{{ nautobot_config }}"
+    owner: "{{ nautobot_user }}"
+    group: "{{ nautobot_group }}"
+  become: true
+
+- name: install | Running Database Migrations
+  networktocode.nautobot.nautobot_server:
+    args:
+      config: "{{ nautobot_config }}"
+    command: migrate
+    db_password: "{{ nautobot_db.password }}"
+    db_username: "{{ nautobot_db.user }}"
+    project_path: "{{ nautobot_root }}"
+    virtualenv: "{{ nautobot_root }}"
+  become: true
+  become_user: "{{ nautobot_user }}"
+  vars:
+    ansible_ssh_pipelining: true
+
+- name: install | Createsuperuser
+  networktocode.nautobot.nautobot_server:
+    args:
+      config: "{{ nautobot_config }}"
+      email: "{{ nautobot_admin.email }}"
+      username: "{{ nautobot_admin.user }}"
+    command: createsuperuser
+    db_password: "{{ nautobot_db.password }}"
+    db_username: "{{ nautobot_db.user }}"
+    project_path: "{{ nautobot_root }}"
+    virtualenv: "{{ nautobot_root }}"
+  become: true
+  become_user: "{{ nautobot_user }}"
+  vars:
+    ansible_ssh_pipelining: true
+
+- name: install | Collectstatic
+  networktocode.nautobot.nautobot_server:
+    args:
+      config: "{{ nautobot_config }}"
+    command: collectstatic
+    db_password: "{{ nautobot_db.password }}"
+    db_username: "{{ nautobot_db.user }}"
+    project_path: "{{ nautobot_root }}"
+    virtualenv: "{{ nautobot_root }}"
+  become: true
+  become_user: "{{ nautobot_user }}"
+  vars:
+    ansible_ssh_pipelining: true

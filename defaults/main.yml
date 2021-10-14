@@ -1,2 +1,37 @@
 ---
 # defaults file for ansible_nautobot
+
+nautobot_admin:
+  email: admin93@example.com
+  user: superadmin7
+
+nautobot_allowed_hosts:
+  - "*"
+  # - 192.168.0.0/24
+
+  # defines default location of Nautobot config
+nautobot_config: "{{ nautobot_root }}/.nautobot/nautobot_config.py"
+
+nautobot_db:
+  name: nautobot
+  user: nautobot
+  password: nautobot
+  host: localhost
+  port:
+
+# defines Debian pre-req packages
+nautobot_debian_pre_reqs:
+  - build-essential
+  - git
+  - graphviz
+  - nginx
+  - supervisor
+
+# defines Nautobot group
+nautobot_group: nautobot
+
+# defines Nautobot default root location
+nautobot_root: /opt/nautobot
+
+# defines Nautobot user
+nautobot_user: nautobot
