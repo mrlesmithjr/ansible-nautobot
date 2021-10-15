@@ -13,7 +13,7 @@
     system: true
   become: true
 
-- name: install | Updating Python Packages
+- name: install | Updating Python Packages # noqa package-latest
   ansible.builtin.pip:
     name:
       - pip
@@ -51,6 +51,7 @@
     dest: "{{ nautobot_config }}"
     owner: "{{ nautobot_user }}"
     group: "{{ nautobot_group }}"
+    mode: u=rw,g=r,o=r
   become: true
 
 - name: install | Running Database Migrations

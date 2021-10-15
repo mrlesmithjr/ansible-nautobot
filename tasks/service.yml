@@ -3,6 +3,7 @@
   ansible.builtin.template:
     dest: /etc/systemd/system/nautobot.service
     src: nautobot.service.j2
+    mode: u=rw,g=r,o=r
   become: true
   notify: restart nautobot
 
@@ -10,5 +11,6 @@
   ansible.builtin.template:
     dest: /etc/systemd/system/nautobot-worker.service
     src: nautobot-worker.service.j2
+    mode: u=rw,g=r,o=r
   become: true
   notify: restart nautobot-worker
