@@ -8,17 +8,11 @@ galaxy_info:
   role_name: ansible_nautobot
   namespace: mrlesmithjr
 
-  # platforms:
-  # - name: Fedora
-  #   versions:
-  #   - all
-  #   - 25
-  # - name: SomePlatform
-  #   versions:
-  #   - all
-  #   - 1.0
-  #   - 7
-  #   - 99.99
+  platforms:
+  - name: Ubuntu
+    versions:
+    - bionic
+    - focal
 
   galaxy_tags: []
 
