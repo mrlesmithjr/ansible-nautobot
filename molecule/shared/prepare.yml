@@ -10,4 +10,3 @@
     - name: Include mrlesmithjr.ansible_bootstrap_python
       include_role:
         name: mrlesmithjr.ansible_bootstrap_python
-
