@@ -6,16 +6,16 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-Environment="NAUTOBOT_ROOT=/opt/nautobot"
+Environment="NAUTOBOT_ROOT={{ nautobot_root }}"
 
-User=nautobot
-Group=nautobot
+User={{ nautobot_user }}
+Group={{ nautobot_group }}
 PIDFile=/var/tmp/nautobot.pid
-WorkingDirectory=/opt/nautobot
+WorkingDirectory={{ nautobot_root }}
 
-ExecStart=/opt/nautobot/bin/nautobot-server start --pidfile /var/tmp/nautobot.pid --ini /opt/nautobot/uwsgi.ini
-ExecStop=/opt/nautobot/bin/nautobot-server start --stop /var/tmp/nautobot.pid
-ExecReload=/opt/nautobot/bin/nautobot-server start --reload /var/tmp/nautobot.pid
+ExecStart={{ nautobot_root }}/bin/nautobot-server start --pidfile /var/tmp/nautobot.pid --ini {{ nautobot_root }}/uwsgi.ini
+ExecStop={{ nautobot_root }}/bin/nautobot-server start --stop /var/tmp/nautobot.pid
+ExecReload={{ nautobot_root }}/bin/nautobot-server start --reload /var/tmp/nautobot.pid
 
 Restart=on-failure
 RestartSec=30
