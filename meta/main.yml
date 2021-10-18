@@ -2,23 +2,19 @@
 galaxy_info:
   author: Larry Smith Jr.
   description: Ansible role to install/configure Nautobot
-  company: Enter company name
   license: MIT
   min_ansible_version: 2.8
-  role_name: ansible_nautobot
+  role_name: nautobot
   namespace: mrlesmithjr
 
-  # platforms:
-  # - name: Fedora
-  #   versions:
-  #   - all
-  #   - 25
-  # - name: SomePlatform
-  #   versions:
-  #   - all
-  #   - 1.0
-  #   - 7
-  #   - 99.99
+  platforms:
+  - name: Debian
+    versions:
+    - 10
+  - name: Ubuntu
+    versions:
+    - bionic
+    - focal
 
   galaxy_tags: []
 

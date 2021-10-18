@@ -1,8 +1,11 @@
 ---
 # tasks file for ansible_nautobot
-- ansible.builtin.include_tasks: debian.yml
+- name: Debian based setup
+  ansible.builtin.include_tasks: debian.yml
   when: ansible_os_family == 'Debian'
 
-- ansible.builtin.include_tasks: install.yml
+- name: Install Nautobot
+  ansible.builtin.include_tasks: install.yml
 
-- ansible.builtin.include_tasks: service.yml
+- name: Configure Nautobot services
+  ansible.builtin.include_tasks: service.yml

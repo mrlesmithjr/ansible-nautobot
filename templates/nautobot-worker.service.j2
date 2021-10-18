@@ -6,14 +6,14 @@ Wants=network-online.target
 
 [Service]
 Type=exec
-Environment="NAUTOBOT_ROOT=/opt/nautobot"
+Environment="NAUTOBOT_ROOT={{ nautobot_root }}"
 
-User=nautobot
-Group=nautobot
+User={{ nautobot_user }}
+Group={{ nautobot_group }}
 PIDFile=/var/tmp/nautobot-worker.pid
-WorkingDirectory=/opt/nautobot
+WorkingDirectory={{ nautobot_root }}
 
-ExecStart=/opt/nautobot/bin/nautobot-server celery worker --loglevel INFO --pidfile /var/tmp/nautobot-worker.pid
+ExecStart={{ nautobot_root }}/bin/nautobot-server celery worker --config {{ nautobot_config }} --loglevel INFO --pidfile /var/tmp/nautobot-worker.pid
 
 Restart=always
 RestartSec=30
