@@ -1,4 +1,14 @@
 ---
+- name: service | Configuring uWSGI
+  ansible.builtin.template:
+    dest: "{{ nautobot_root }}/uwsgi.ini"
+    src: uwsgi.ini.j2
+    mode: u=rw,g=r,o=r
+  become: true
+  notify:
+    - restart nautobot
+    - restart nautobot-worker
+
 - name: service | Configuring Nautobot Service
   ansible.builtin.template:
     dest: /etc/systemd/system/nautobot.service

@@ -15,3 +15,10 @@
     enabled: true
     daemon_reload: true
   become: true
+
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted
+    enabled: true
+  become: true

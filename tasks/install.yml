@@ -97,3 +97,30 @@
   become_user: "{{ nautobot_user }}"
   vars:
     ansible_ssh_pipelining: true
+
+- name: install | Removing NGINX Default Site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  become: true
+  notify: restart nginx
+
+- name: install | Configuring Nautobot NGINX Site
+  template:
+    src: nautobot.conf.j2
+    dest: /etc/nginx/sites-available/nautobot.conf
+    owner: "{{ nautobot_user }}"
+    group: "{{ nautobot_group }}"
+    mode: u=rw,g=r,o=r
+  become: true
+  notify: restart nginx
+
+- name: install | Creating Symlink For Nautobot Site
+  file:
+    src: /etc/nginx/sites-available/nautobot.conf
+    dest: /etc/nginx/sites-enabled/nautobot.conf
+    owner: "{{ nautobot_user }}"
+    group: "{{ nautobot_group }}"
+    state: link
+  become: true
+  notify: restart nginx

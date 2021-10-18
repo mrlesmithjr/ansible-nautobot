@@ -1,2 +1,14 @@
 ---
 # vars file for ansible_nautobot
+
+# defines default location of Nautobot config
+nautobot_config: "{{ nautobot_root }}/nautobot_config.py"
+
+# defines Nautobot group
+nautobot_group: nautobot
+
+# defines Nautobot default root location
+nautobot_root: /opt/nautobot
+
+# defines Nautobot user
+nautobot_user: nautobot

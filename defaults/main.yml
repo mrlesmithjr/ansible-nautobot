@@ -9,9 +9,6 @@ nautobot_allowed_hosts:
   - "*"
   # - 192.168.0.0/24
 
-  # defines default location of Nautobot config
-nautobot_config: "{{ nautobot_root }}/.nautobot/nautobot_config.py"
-
 nautobot_db:
   name: nautobot
   user: nautobot
@@ -26,12 +23,3 @@ nautobot_debian_pre_reqs:
   - graphviz
   - nginx
   - supervisor
-
-# defines Nautobot group
-nautobot_group: nautobot
-
-# defines Nautobot default root location
-nautobot_root: /opt/nautobot
-
-# defines Nautobot user
-nautobot_user: nautobot

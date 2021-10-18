@@ -13,7 +13,7 @@ Group={{ nautobot_group }}
 PIDFile=/var/tmp/nautobot-worker.pid
 WorkingDirectory={{ nautobot_root }}
 
-ExecStart={{ nautobot_root }}/bin/nautobot-server celery worker --loglevel INFO --pidfile /var/tmp/nautobot-worker.pid
+ExecStart={{ nautobot_root }}/bin/nautobot-server celery worker --config {{ nautobot_config }} --loglevel INFO --pidfile /var/tmp/nautobot-worker.pid
 
 Restart=always
 RestartSec=30
