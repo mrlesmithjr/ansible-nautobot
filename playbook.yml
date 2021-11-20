@@ -21,6 +21,6 @@
     - name: Include ansible-redis
       include_role:
         name: ansible-redis
-    - name: Include ansible_nautobot
+    - name: Include ansible-nautobot
       include_role:
-        name: ansible_nautobot
+        name: ansible-nautobot
