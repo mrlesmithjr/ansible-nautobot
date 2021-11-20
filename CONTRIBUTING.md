@@ -1,4 +1,4 @@
-# Contributing to ansible_nautobot
+# Contributing to ansible-nautobot
 
 ## Table Of Contents
 
@@ -6,4 +6,4 @@
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by the [ansible_nautobot Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [mrlesmithjr@gmail.com](mailto:mrlesmithjr@gmail.com).
+This project and everyone participating in it is governed by the [ansible-nautobot Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [mrlesmithjr@gmail.com](mailto:mrlesmithjr@gmail.com).

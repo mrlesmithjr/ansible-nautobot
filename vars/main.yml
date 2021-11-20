@@ -1,5 +1,5 @@
 ---
-# vars file for ansible_nautobot
+# vars file for ansible-nautobot
 
 # defines default location of Nautobot config
 nautobot_config: "{{ nautobot_root }}/nautobot_config.py"

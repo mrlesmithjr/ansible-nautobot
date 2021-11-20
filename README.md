@@ -1,4 +1,4 @@
-# ansible_nautobot
+# ansible-nautobot
 
 Ansible role to install/configure Nautobot
 
@@ -6,11 +6,11 @@ Ansible role to install/configure Nautobot
 
 ### GitHub Actions
 
-![Molecule Test](https://github.com/mrlesmithjr/ansible_nautobot/workflows/Molecule%20Test/badge.svg)
+![Molecule Test](https://github.com/mrlesmithjr/ansible-nautobot/workflows/Molecule%20Test/badge.svg)
 
 ### Travis CI
 
-[![Build Status](https://travis-ci.org/mrlesmithjr/ansible_nautobot.svg?branch=master)](https://travis-ci.org/mrlesmithjr/ansible_nautobot)
+[![Build Status](https://travis-ci.org/mrlesmithjr/ansible-nautobot.svg?branch=master)](https://travis-ci.org/mrlesmithjr/ansible-nautobot)
 
 ## Requirements
 

@@ -1,5 +1,5 @@
 ---
-# defaults file for ansible_nautobot
+# defaults file for ansible-nautobot
 
 nautobot_admin:
   email: admin93@example.com

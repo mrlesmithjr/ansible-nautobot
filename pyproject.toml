@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ansible_nautobot"
+name = "ansible-nautobot"
 version = "0.1.0"
 description = ""
 authors = ["Larry Smith Jr. <mrlesmithjr@gmail.com>"]
